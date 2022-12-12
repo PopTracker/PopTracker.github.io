@@ -41,6 +41,7 @@ jobs:
       - name: Copy from PopTracker to pages
         run: |
           cp -R .poptracker/schema schema
+          cp -R .poptracker/doc doc
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
