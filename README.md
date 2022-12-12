@@ -1,6 +1,6 @@
-# PopTracker
+# App
 
-*Powerful open progress tracker* is a project to offer a universal, scriptable randomizer tracking solution that is
+PopTracker is a project to offer a universal, scriptable randomizer tracking solution that is
 open source, runs everywhere and supports auto-tracking.
 
 
