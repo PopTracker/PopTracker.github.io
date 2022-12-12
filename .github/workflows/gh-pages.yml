@@ -32,6 +32,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
+      - name: Checkout PopTracker
+        uses: actions/checkout@v3
+        with:
+          repository: black-sliver/PopTracker
+          path: .poptracker
+          submodules: true
+      - name: Copy from PopTracker to pages
+        run: |
+          cp -R .poptracker/schema schema
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
