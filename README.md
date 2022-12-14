@@ -1,5 +1,3 @@
-# App
-
 PopTracker is a project to offer a universal, scriptable randomizer tracking solution that is
 open source, runs everywhere and supports auto-tracking.
 
