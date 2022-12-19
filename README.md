@@ -14,3 +14,8 @@ if you want to build it yourself.
 ## More Info
 
 Head over to [the project readme](https://github.com/black-sliver/PopTracker#readme) for more information.
+
+
+## JSON Schema
+
+See [schema](schema).
