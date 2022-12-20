@@ -45,7 +45,24 @@ jobs:
       - name: Create schema indices
         run: |
           cd schema
-          for d in */; do echo -e "# ${d%/} Schema\n" > $d/index.md; for f in $d/*; do [ "${f##*/}" != "index.md" ] && echo "* [${f##*/}](${f##*/})" >> $d/index.md; done; done
+          for d in */; do \
+            echo -e "# ${d%/} Schema\n" > $d/index.md; \
+            cd "$d"; \
+            for f in *; do \
+                [ "$f" != "index.md" ] && echo "* [$f]($f)" >> index.md; \
+            done; \
+            for e in */; do \
+              if [ -d "$e" ]; then
+                echo -e "# ${d%/} ${e%/} Schema\n" > $e/index.md; \
+                cd "$e"
+                for f in *; do \
+                  [ "$f" != "index.md" ] && echo "* [$f]($f)" >> index.md; \
+                done; \
+                cd ..; \
+              fi; \
+            done; \
+            cd ..; \
+          done
           cd ..
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
