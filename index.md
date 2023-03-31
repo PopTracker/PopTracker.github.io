@@ -11,6 +11,11 @@ See [build instructions](https://github.com/black-sliver/PopTracker/blob/master/
 if you want to build it yourself.
 
 
+## Color Picker
+
+To customize map colors, follow the instructions on [the Color Picker page](color-picker.html)
+
+
 ## More Info
 
 Head over to [the project readme](https://github.com/black-sliver/PopTracker#readme) for more information.
