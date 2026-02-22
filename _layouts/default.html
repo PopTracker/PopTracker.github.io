@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="utf-8"/>
+
+{% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    {% include head-custom.html %}
+    <style>
+    </style>
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <ul>
+            <li class="left"><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li class="right"><a href="https://github.com/{{ site.repo }}">GitHub</a></li>
+            <li class="right"><a href="https://discord.com/invite/gwThqMCPgK">Community Discord</a></li>
+          </ul>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>{{ site.title | default: site.github.repository_name }}</h1>
+          <p>{{ site.tagline | default: site.description | default: site.github.project_tagline }}</p>
+        </div>
+        <hr>
+
+        {{ content }}
+
+        <hr>
+        <div id="footer"> <!-- TODO: footer and custom CSS -->
+          <span class="credits left">
+            Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a><br/>
+            Help improve this page on <a href="{{ site.github.repository_url }}">GitHub</a>
+          </span>
+          <span class="credits right">
+            Theme based on <i>midnight</i> by <a href="https://twitter.com/mattgraham">mattgraham</a><br/>
+            Hosted on GitHub Pages
+          </span>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

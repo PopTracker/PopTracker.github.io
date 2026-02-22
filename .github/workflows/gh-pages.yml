@@ -64,6 +64,10 @@ jobs:
             cd ..; \
           done
           cd ..
+      - name: Populate _data
+        run: |
+          pip install .github/requirements.txt
+          python .github/make_data.py
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:

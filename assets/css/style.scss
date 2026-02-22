@@ -1,0 +1,115 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+#header {
+  text-transform: uppercase;
+
+  nav {
+    background: none;
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+
+    ul > li > a {
+      background: None;
+      border-color: rgba(0, 0, 0, 0);
+      box-shadow: None;
+    }
+  }
+}
+
+@media print, screen and (max-width: 480px) and (min-width: 270px) {
+  #header {
+    nav {
+      display: block;
+
+      ul > li {
+        padding-top: 8px;
+      }
+    }
+  }
+}
+
+@media print, screen and (max-width: 339px) {
+  #header {
+    nav {
+      .left {
+        display: none;
+      }
+    }
+  }
+}
+
+section #title {
+  margin-top: -35px;
+  padding-top: 35px;
+  margin-bottom: 0px;
+  background: url({{'/assets/images/title-bg.webp' | relative_url }});
+  background-position: center;
+  background-repeat: no-repeat;
+  text-shadow: 1px 1px 2px rgba(0,0,0,1), 0 0 1em rgba(0,0,0,0.5);
+}
+
+#footer {
+  font-size: 11px;
+  font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #696969;
+  margin-top: -10px;
+
+  .credits.left {
+    float: left;
+  }
+
+  .credits.right {
+    text-align: right;
+    float: right;
+
+    @media (orientation: portrait) {
+      text-align: left;
+      float: left;
+      clear: both;
+    }
+  }
+}
+
+.download {
+  display: inline-block;
+  background-color: #ffeb9b;
+  color: #000;
+  margin: 5px;
+  padding: 10px;
+  padding-left: 46px;
+  padding-right: 15px;
+  min-width: 70px;
+  font-weight: bold;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: #ffcc00;
+    color: #000;
+  }
+
+  &::before {
+    content: "";
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><g fill="rgb(0,0,0)"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M256 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 210.7-41.4-41.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 242.7 256 32zM64 320c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-46.9 0-56.6 56.6c-31.2 31.2-81.9 31.2-113.1 0L110.9 320 64 320zm304 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></g></svg>');
+    position:absolute;
+    width: 26px;
+    height: 26px;
+    margin-left: -36px;
+    margin-top: -2px;
+    background-repeat: no-repeat;
+  }
+
+  @media (orientation: portrait) {
+    display: block;
+  }
+}

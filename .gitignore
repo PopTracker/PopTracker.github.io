@@ -1,0 +1,14 @@
+# cache
+/.jekyll-cache
+/Gemfile.lock
+
+# temp file
+*~
+
+# local-only test files
+/_mockup
+/.venv
+.mypy_cache
+
+# build output
+/_site

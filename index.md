@@ -2,10 +2,22 @@ PopTracker is a project to offer a universal, scriptable randomizer tracking sol
 open source, runs everywhere and supports auto-tracking.
 
 
-## Downloads
+## Download
 
-Head over to [releases](https://github.com/black-sliver/PopTracker/releases)
-and unfold "Assets" of the latest release or pre-release to get an executable.
+### Latest {{ site.data.releases.latest.version }}
+{% if site.data.releases.latest %}
+{% comment %}<!-- see .github/make_data.py -->{% endcomment %}
+<a class="download" href="{{ site.data.releases.latest.windows_download }}">Windows</a>
+<a class="download" href="{{ site.data.releases.latest.macos_download }}">macOS</a>
+<a class="download" href="{{ site.data.releases.latest.appimage_download }}">Linux AppImage</a>
+<a class="download" href="{{ site.data.releases.latest.linux_download }}">Linux tar.xz</a>
+[Source]({{ site.data.releases.latest.source_download }}) •
+[Changelog]({{ site.data.releases.latest.changelog }}) •
+[All Downloads]({{ site.data.releases.latest.url }}){% if site.data.releases.next and site.data.releases.next.url %} •
+[Preview {{ site.data.releases.next.version }}]({{ site.data.releases.next.url }}){% endif %}
+{% else %}
+[GitHub Release Page](https://github.com/black-sliver/popTracker/releases/latest)
+{% endif %}
 
 See [build instructions](https://github.com/black-sliver/PopTracker/blob/master/BUILD.md)
 if you want to build it yourself.
