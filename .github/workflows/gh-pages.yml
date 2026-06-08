@@ -18,7 +18,7 @@ on:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: "pages-${{ github.event.number }}"
   cancel-in-progress: true
 
 # Permissions only needed for deploy
@@ -28,6 +28,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      PR: "${{ github.event.number }}"  # for debugging
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.3
