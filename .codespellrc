@@ -1,0 +1,4 @@
+[codespell]
+# NOTE: style.css is build output
+skip = ./.git,*.lock,./_site/assets/css/style.css
+ignore-words = ./.codespellignore
