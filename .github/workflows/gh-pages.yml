@@ -4,24 +4,25 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-  
+
+  # Test when opening a PR (see 'if' in deploy step)
+  pull_request:
+    branches: ["main"]
+
   # Allow to trigger from outside
   repository_dispatch:
     types: ["deploy"]
-  
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 # Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
+# Permissions only needed for deploy
+permissions: {}
 
 jobs:
   # Build job
@@ -74,10 +75,18 @@ jobs:
           source: ./
           destination: ./_site
       - name: Upload artifact
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5.0.0
 
   # Deployment job
   deploy:
+    # Skip job for PR (testing only)
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
