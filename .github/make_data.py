@@ -32,9 +32,9 @@ def extract_data(data: dict[str, t.Any]) -> dict[str, str]:
             downloads["source"] = download
         elif name.endswith("-source.tar.xz.minisig"):
             sigs["source"] = download
-        elif name.endswith("_macos.zip"):
+        elif name.endswith("_macos.zip") or name.endswith("_macos_universal.zip"):
             downloads["macos"] = download
-        elif name.endswith("_macos.zip.minisig"):
+        elif name.endswith("_macos.zip.minisig") or name.endswith("_macos_universal.zip.minisig"):
             sigs["macos"] = download
         elif "_ubuntu" in name and name.endswith(".tar.xz"):
             downloads["linux"] = download
