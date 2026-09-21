@@ -59,6 +59,12 @@
             .main div {
                 margin: 7px;
             }
+            .opacity-container {
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
         </style>
     </head>
     <body>
@@ -167,6 +173,14 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h2>Map Tooltip</h2>
+            <div class="opacity-container">
+                <label for="tooltip-opacity">Opacity:</label>
+                <input type="range" id="tooltip-opacity" min="0" max="1" step="0.01" value="0.75" />
+                <span id="opacity-val">0.75</span>
+            </div>
+
             <div>
                 <button id="save">Save</button>
             </div>
@@ -198,6 +212,8 @@
             ];
             
             var inputs = document.querySelectorAll("#MapLocationColors input[type='color']");
+            var opacitySlider = document.getElementById("tooltip-opacity");
+            var opacityVal = document.getElementById("opacity-val");
 
             function applyColors(colors) {
                 for (var i = 0; i < inputs.length; ++i) {
@@ -215,7 +231,23 @@
                 };
             }
 
+            function applyOpacity(val) {
+                if (val !== undefined) {
+                    val = Math.max(0, Math.min(1, val));
+                    opacitySlider.value = val;
+                    opacityVal.textContent = val.toFixed(2);
+                } else {
+                    opacitySlider.value = 0.75;
+                    opacityVal.textContent = "0.75";
+                }
+            }
+
             applyColors(defaultColors);
+            applyOpacity();
+
+            opacitySlider.addEventListener("input", function() {
+                opacityVal.textContent = parseFloat(opacitySlider.value).toFixed(2);
+            });
 
             function clickOther(src, dst) {
                 src.addEventListener("click", function() {
@@ -239,7 +271,9 @@
                     loaded["MapWidget.StateColors"] = [];
                 for (var i = 0; i < inputs.length; ++i)
                     loaded["MapWidget.StateColors"][i] = inputs[i].value;
-                var res = JSON.stringify(loaded);
+                loaded["MapTooltip.Opacity"] = parseFloat(opacitySlider.value);
+
+                var res = JSON.stringify(loaded, null, 4);
                 var el = document.createElement('a');
                 el.setAttribute("href", "data:application/json," + encodeURIComponent(res));
                 el.setAttribute('download', "colors.json");
@@ -272,6 +306,12 @@
                         var data = JSON.parse(this.result);
                         if (data["MapWidget.StateColors"]) {
                             applyColors(data["MapWidget.StateColors"]);
+                            
+                            // Check for opacity
+                            if (data["MapTooltip.Opacity"] !== undefined) {
+                                applyOpacity(data["MapTooltip.Opacity"]);
+                            }
+
                             loaded = data;
                         } else {
                             alert("Wrong json file!");
