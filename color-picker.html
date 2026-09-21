@@ -233,7 +233,6 @@
 
             function applyOpacity(val) {
                 if (val !== undefined) {
-                    if (val > 1.0) val = val / 255.0;
                     val = Math.max(0, Math.min(1, val));
                     opacitySlider.value = val;
                     opacityVal.textContent = val.toFixed(2);
